@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-test-renderer": "^16.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,6 +16,8 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
-    "@storybook/react": "^3.4.10"
+    "@storybook/react": "^3.4.10",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0"
   }
 }
