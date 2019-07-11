@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import CollapseHeader from './CollapseHeader';
-import CollapseContent from './CollapseContent';
-import './collapse.css';
+import React, { Component } from "react";
+import CollapseHeader from "./CollapseHeader";
+import CollapseContent from "./CollapseContent";
+import "./collapse.css";
 
 class Collapse extends Component {
   constructor() {
@@ -9,26 +9,27 @@ class Collapse extends Component {
     this.state = {
       data: [
         {
-          title: 'titulo de teste sobre vingadores',
-          status: 'opened',
-          content: 'Lorem laborum dolor ut reprehenderit adipisci Incidunt vel unde soluta atque laborum, corporis delectus assumenda. Explicabo deleniti commodi quis vel temporibus Dolore obcaecati corrupti asperiores dolore autem provident Facilis qui',
+          title: "titulo de teste sobre vingadores",
+          opened: true,
+          content:
+            "Lorem laborum dolor ut reprehenderit adipisci Incidunt vel unde soluta atque laborum, corporis delectus assumenda. Explicabo deleniti commodi quis vel temporibus Dolore obcaecati corrupti asperiores dolore autem provident Facilis qui"
         },
         {
-          status: 'closed',
-          content: 'Lorem laborum dolor ut reprehenderit adipisci Incidunt vel unde soluta atque laborum, corporis delectus assumenda. Explicabo deleniti commodi quis vel temporibus Dolore obcaecati corrupti asperiores dolore autem provident Facilis qui',
-        },
-      ],
+          opened: false,
+          content:
+            "Lorem laborum dolor ut reprehenderit adipisci Incidunt vel unde soluta atque laborum, corporis delectus assumenda. Explicabo deleniti commodi quis vel temporibus Dolore obcaecati corrupti asperiores dolore autem provident Facilis qui"
+        }
+      ]
     };
   }
 
-  handleClick = (id) => {
-    this.setState(prevState => {
-      const newData = prevState;
-      newData.data[id].status = newData.data[id].status === 'opened' ? 'closed' : 'opened';
-
-      return newData;
+  handleClick = id => {
+    this.setState({
+      data: this.state.data.map((ele, index) =>
+        index === id ? { ...ele, opened: !ele.opened } : ele
+      )
     });
-  }
+  };
 
   render() {
     return (
@@ -37,14 +38,11 @@ class Collapse extends Component {
           <div className="item" key={index}>
             <CollapseHeader
               title={item.title}
-              status={item.status}
+              opened={item.opened}
               id={index}
               handleClick={this.handleClick}
             />
-            <CollapseContent
-              content={item.content}
-              status={item.status}
-            />
+            {item.opened && <CollapseContent content={item.content} />}
           </div>
         ))}
       </div>

@@ -1,14 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const CollapseContent = ({ status, content }) => {
-  if (status === 'closed') {
-    return false;
-  }
-  return (
-    <div className="content">
-      {content}
-    </div>
-  );
-};
+const CollapseContent = ({ content }) => (
+  <div className="content">{content}</div>
+);
 
 export default CollapseContent;
